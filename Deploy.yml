@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx-jenkins101
+        image: ponetagon/nginx-jenkins101
         ports:
         - containerPort: 80
 ---
