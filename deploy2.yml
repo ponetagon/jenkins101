@@ -1,21 +1,21 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx2
 spec:
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: nginx
+      app: nginx2
   replicas: 2 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       labels:
-        app: nginx
+        app: nginx2
     spec:
       containers:
-      - name: nginx
+      - name: nginx2
         image: ponetagon/nginx-jenkins101
         ports:
         - containerPort: 80
@@ -23,15 +23,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: nginx2
   namespace: default
   labels:
-    app: nginx
+    app: nginx2
 spec:
   ports:
   - name: http
     port: 80
     protocol: TCP
   selector:
-    app: nginx
+    app: nginx2
   type: NodePort
